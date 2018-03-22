@@ -1,3 +1,5 @@
+# Basic test with an optional w3c capability for chrome
+
 from selenium import webdriver
 from sauceclient import SauceClient
 import os
@@ -11,7 +13,7 @@ desired_caps = {
     'browserName': "chrome",
     'version': "65.0",
     'seleniumVersion': "3.9.1",
-    'goog:chromeOptions':{"w3c": "true"}
+    # 'goog:chromeOptions':{"w3c": "true"}
 }
 
 driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)

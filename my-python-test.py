@@ -1,3 +1,5 @@
+# Forcing a test to fail and declaring it a failure with the sauce_client
+
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from sauceclient import SauceClient
