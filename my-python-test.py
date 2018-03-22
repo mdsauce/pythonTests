@@ -11,7 +11,7 @@ sauce_client = SauceClient(username, access_key)
 desired_caps = {
 	'platform': "Windows 10",
     'browserName': "chrome",
-    'version': "65.0",
+    'version': "65.0"
 }
 
 driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)

@@ -7,10 +7,11 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-	'platformName': "Windows 10",
+	'platform': "Windows 10",
     'browserName': "chrome",
-    'browserVersion': "65.0",
-    'seleniumVersion': "3.8.0"
+    'version': "65.0",
+    'seleniumVersion': "3.9.1",
+    'goog:chromeOptions':{"w3c": "true"}
 }
 
 driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
