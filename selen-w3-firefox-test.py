@@ -1,7 +1,5 @@
-# Ran using Python -version: 3.6.4.  Full Stack trace in the README.md
-# This results in a VM running but timing out.  The VM will have the correct platform OS.  Stack trace error:
-# selenium.common.exceptions.SessionNotCreatedException: Message: session not created exception: Missing or invalid capabilities
-#   (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.10586 x86_64)
+# Ran using Python -version: 3.6.4.  
+# 17:45:14.169 INFO - Detected dialect: W3C appears in the selenium-server.log
 # - Max Dobeck
 from selenium import webdriver
 from sauceclient import SauceClient
