@@ -9,7 +9,7 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-	'platform': "Windows 10",
+    'platform': "Windows 10",
     'browserName': "chrome",
     'version': "65.0",
     'seleniumVersion': "3.9.1",

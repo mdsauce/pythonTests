@@ -1,7 +1,6 @@
 # Ran using Python -version: 3.6.4.  Full Stack trace in the README.md
-# This results in a VM running but timing out.  The VM will have the correct platform OS.  Stack trace error:
-# selenium.common.exceptions.SessionNotCreatedException: Message: session not created exception: Missing or invalid capabilities
-#   (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.10586 x86_64)
+# This results in NO VM session.  The below stacktrace error is returned in the terminal:
+# selenium.common.exceptions.WebDriverException: Message: No browserName or device specified in session request. Please check our platforms documentation (https://saucelabs.com/docs/platforms): {'goog:chromeOptions': {'w3c': 'true'}, 'sauce:platform': 'Windows 10', 'sauce:browserVersion': '65', 'sauce:seleniumVersion': '3.8.0', 'sauce:browserName': 'chrome'}
 # - Max Dobeck
 from selenium import webdriver
 from sauceclient import SauceClient
@@ -12,9 +11,9 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "Windows 10",
-    'browserName': "chrome",
-    'browserVersion': "65",
+    'sauce:platform': "Windows 10",
+    'sauce:browserName': "chrome",
+    'sauce:browserVersion': "65",
     'sauce:seleniumVersion': "3.8.0",
     'goog:chromeOptions':{"w3c": "true"}
 }
