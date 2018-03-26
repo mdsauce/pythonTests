@@ -1,5 +1,4 @@
 # Basic test with an optional w3c capability for chrome
-
 from selenium import webdriver
 from sauceclient import SauceClient
 import os
@@ -13,6 +12,8 @@ desired_caps = {
     'browserName': "chrome",
     'version': "65.0",
     'seleniumVersion': "3.9.1",
+    'name': "My basic Python test"
+    # 'tunnelIdentifier': "FakeBusiness"
     # 'goog:chromeOptions':{"w3c": "true"}
 }
 
