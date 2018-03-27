@@ -1,6 +1,7 @@
 # Basic test with an optional w3c capability for chrome
 from selenium import webdriver
 from sauceclient import SauceClient
+import time
 import os
 
 username = os.environ.get('SAUCE_USERNAME')
@@ -12,17 +13,14 @@ desired_caps = {
     'browserName': "chrome",
     'version': "65.0",
     'seleniumVersion': "3.9.1",
-    'name': "My basic Python test",
-    'tunnelIdentifier': "FakeBusiness"
-    # 'goog:chromeOptions':{"w3c": "true"}
+    'name': "My Python Breakpoint Test"
 }
 
 driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
-driver.implicitly_wait(30)
+time.sleep(3)
 driver.maximize_window()
-driver.execute_script("sauce:context=Now moving to Google")
-driver.get("https://www.google.com")
-
+driver.get("https://saucelabs.com")
+driver.execute_script("sauce: break")
 sauce_client.jobs.update_job(driver.session_id, passed=True)
 
 driver.quit()
