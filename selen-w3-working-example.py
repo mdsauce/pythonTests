@@ -1,4 +1,6 @@
-# Basic test with an optional w3c capability for chrome
+# Ran using Python -version: 3.6.4.  Full Stack trace in the README.md
+# This results in a VM session with the windows 2008 platform (reports as Windows 7).  The below stacktrace error is returned in the terminal:
+# - Max Dobeck
 from selenium import webdriver
 from sauceclient import SauceClient
 import os
@@ -8,19 +10,13 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "Windows 7",
+    'platformName': "Windows 7",
     'browserName': "internet explorer",
-    'version': "11",
-    # 'seleniumVersion': "3.9.1",
-    'name': "My basic Python test",
-    # 'tunnelIdentifier': "RandomWords"
-    # 'goog:chromeOptions':{"w3c": "true"}
+    'browserVersion': "11", 
+    'sauce:seleniumVersion': "3.9.1"
 }
 
 driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
-driver.implicitly_wait(30)
-driver.maximize_window()
-driver.execute_script("sauce:context=Now moving to Google")
 driver.get("https://www.google.com")
 
 sauce_client.jobs.update_job(driver.session_id, passed=True)

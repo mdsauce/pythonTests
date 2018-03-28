@@ -14,7 +14,7 @@ desired_caps = {
     'sauce:platform': "Windows 10",
     'sauce:browserName': "chrome",
     'sauce:browserVersion': "65",
-    'sauce:seleniumVersion': "3.8.0",
+    'sauce:seleniumVersion': "3.9.1",
     'goog:chromeOptions':{"w3c": "true"}
 }
 
