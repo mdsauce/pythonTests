@@ -13,7 +13,8 @@ desired_caps = {
     'browserName': "chrome",
     'version': "latest",
     # 'seleniumVersion': "3.9.1",
-    'name': "Chrome ExtendedDebugging Response Test"
+    'name': "Chrome ExtendedDebugging Response Test",
+    'extendedDebugging': "true"
     # 'tunnelIdentifier': "RandomWords"
 }
 
