@@ -9,19 +9,16 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "macOS 10.13",
+    'platform': "windows 10",
     'browserName': "chrome",
-    'version': "latest",
-    # 'seleniumVersion': "3.9.1",
+    'version': "70",
     'name': "Chrome ExtendedDebugging Response Test",
     'extendedDebugging': "true"
-    # 'tunnelIdentifier': "RandomWords"
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
-driver.implicitly_wait(30)
 driver.maximize_window()
-driver.execute_script("sauce:context=Now GETting google.com")
+driver.execute_script("sauce:context=Now POSTing google.com")
 driver.get("https://www.google.com")
 searchBar = driver.find_element_by_name("q")
 searchBar.send_keys('npr', Keys.ENTER)

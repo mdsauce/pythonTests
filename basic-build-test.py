@@ -16,8 +16,7 @@ desired_caps = {
     'build':"My-hyphenated-test-%s" % buildNum
 }
 
-driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
-driver.implicitly_wait(30)
+driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
 driver.maximize_window()
 driver.execute_script("sauce:context=Now moving to Google")
 driver.get("https://www.google.com")
