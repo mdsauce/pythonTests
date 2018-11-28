@@ -13,7 +13,7 @@ desired_caps = {
     'browserName': "chrome",
     'version': "70",
     'name': "Chrome ExtendedDebugging Response Test",
-    'extendedDebugging': "true"
+    'extendedDebugging': True
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)

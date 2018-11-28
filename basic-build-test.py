@@ -10,9 +10,9 @@ buildNum = randint(1,1000)
 
 desired_caps = {
     'platform': "Windows 10",
-    'browserName': "firefox",
+    'browserName': "chrome",
     'version': "latest",
-    'name': "My basic Python test",
+    'name': "Basic Test w a Build Number",
     'build':"My-hyphenated-test-%s" % buildNum
 }
 

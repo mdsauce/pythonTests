@@ -12,11 +12,11 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platformName': "macos 10.13",
+    'platformName': "mac 10.13",
     'browserName': "safari",
     'browserVersion': "12",
     'sauce:options': {
-        'name': 'Safari 12 W3C Complex test'
+        'name': 'W3C Complex test'
     }
 }
 
@@ -43,8 +43,25 @@ selenium_url.click()
 textbook_link = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Test Design Considerations")))
 textbook_link.click()
 
-sauce_client.jobs.update_job(driver.session_id, passed=True)
+driver.get("https://www.google.com/")
+query_input = wait.until(EC.presence_of_element_located((By.NAME, "q")))
+query_input.send_keys("Selenium Testing")
+query_input.send_keys(Keys.RETURN)
+selenium_url = wait.until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, "Selenium Documentation")))
+selenium_url.click()
+textbook_link = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Test Design Considerations")))
+textbook_link.click()
 
+driver.get("https://www.google.com/")
+query_input = wait.until(EC.presence_of_element_located((By.NAME, "q")))
+query_input.send_keys("Selenium Testing")
+query_input.send_keys(Keys.RETURN)
+selenium_url = wait.until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, "Selenium Documentation")))
+selenium_url.click()
+textbook_link = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Test Design Considerations")))
+textbook_link.click()
+
+sauce_client.jobs.update_job(driver.session_id, passed=True)
 
 driver.quit()        
         

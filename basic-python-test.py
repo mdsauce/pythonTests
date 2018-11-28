@@ -15,8 +15,8 @@ desired_caps = {
     'platform': "macos 10.13",
     'browserName': "safari",
     'version': "11.1",
-    'build': "My Test Build",
-    'name': "My basic Python test",
+    'build': "Static Build Name",
+    'name': "Reused Generic Test Name",
     # 'tunnelIdentifier': "myTestTunnel"
     # 'goog:chromeOptions':{"w3c": "true"}
 }
