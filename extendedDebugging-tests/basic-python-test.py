@@ -9,9 +9,10 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "windows 10",
+    'platform': "windows 7",
     'browserName': "chrome",
     'version': "70",
+    'tunnelIdentifier': "tunnelName",
     'name': "Chrome ExtendedDebugging Response Test",
     'extendedDebugging': True
 }

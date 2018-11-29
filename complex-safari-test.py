@@ -16,7 +16,7 @@ desired_caps = {
     'browserName': "safari",
     'browserVersion': "12",
     'sauce:options': {
-        'name': 'W3C Complex test'
+        'name': 'Complex test'
     }
 }
 
