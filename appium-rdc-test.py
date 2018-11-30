@@ -31,4 +31,6 @@ carryout_btn = driver.find_element_by_id('com.yum.pizzahut:id/carryoutButton')
 actions.tap(carryout_btn)
 actions.perform()
 
+time.sleep(12)
+
 driver.quit()
