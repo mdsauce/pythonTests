@@ -13,7 +13,11 @@ def context_check(page="none"):
     print("%d contexts" % (len(contexts)))
     print("All Contexts: ", driver.contexts)
     print("Current Context is ", driver.current_context, "\n")
-    
+
+def teardown(quit_msg, exception):
+    print("%s\n" % quit_msg, exception)
+    driver.quit()
+    sys.exit(1)    
 
 desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['RDC_SALESFORCE_HYBRID']
