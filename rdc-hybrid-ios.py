@@ -6,6 +6,13 @@ from selenium.common.exceptions import NoAlertPresentException
 from appium.webdriver.common.touch_action import TouchAction
 import time, os, sys
 
+def context_check():
+    contexts = driver.contexts
+    print("%d contexts" % (len(contexts)))
+    print("All Contexts: ", driver.contexts)
+    print("Current Context is ", driver.current_context, "\n")
+    
+
 desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['RDC_SALESFORCE_HYBRID']
 desired_capabilities['platformName'] = 'iOS'
@@ -43,6 +50,7 @@ except Exception as e:
     sys.exit(1)
 
 # login
+context_check()
 try:
     time.sleep(8)
     user_text_box = driver.find_element_by_xpath('//XCUIElementTypeOther[@name="Login | Salesforce"]/XCUIElementTypeTextField')
@@ -73,26 +81,45 @@ except Exception as e:
     driver.quit()
     sys.exit(1)
 
-time.sleep(10)
+time.sleep(8)
 
+# Accept app stuff
+context_check()
 try:
-    allow_btn = driver.find_element_by_name('Allow')
+    #allow_btn = driver.find_element_by_accessibility_id(' Allow ')
+    allow_btn = driver.find_element_by_xpath('//XCUIElementTypeButton[@name=" Allow "]')
     actions.tap(allow_btn)
     actions.perform()
 except Exception as e:
-    print("Problem pressing the Allow App Button\n", e)
+    print("Problem pressing the Allow App Button.  Switching contexts\n", e)
+    driver.switch_to.context(driver.contexts[1]) # Loop here over all contexts.  Maybe make a fn
+    context_check()
+    allow_btn = driver.find_element_by_xpath('//XCUIElementTypeButton[@name=" Allow "]')
+    actions.tap(allow_btn)
+    actions.perform()
+except Exception as e:
+    print("Could not press the Allow App Button\n", e)
     driver.quit()
     sys.exit(1)
 
-# Allow the alert
-try: 
-    alert = driver.switch_to_alert()
+# Allow the OS alert
+try:
+    time.sleep(4)
+    driver.switch_to.context('NATIVE_APP')
+    context_check()
+    alert = driver.switch_to.alert
     alert.accept()
-except NoAlertPresentException as e:
-    print("No alert out there", e)
-    pass
+except Exception as e:
+    print("Could not press the Allow App Button\n", e)
+    print(driver.page_source)
+    driver.quit()
+    sys.exit(1)
 
 time.sleep(10)
+print(driver.page_source)
+directory = '%s/' % os.getcwd()
+file_name = 'last_part_of_test.png'
+driver.save_screenshot(directory + file_name)
 
 driver.quit()
 print("The test passed!")
