@@ -1,3 +1,6 @@
+# Good example of how to start RDC Test
+# Also example of dismissing/accepting an iOS alert
+# author Max Dobeck
 from appium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from appium.webdriver.common.touch_action import TouchAction
@@ -7,7 +10,8 @@ desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['PIZZAPIZZA']
 desired_capabilities['platformName'] = 'Android'
 desired_capabilities['automationName'] = 'uiautomator2'
-desired_capabilities['platformVersion'] = '8' 
+#desired_capabilities['platformVersion'] = '8' 
+desired_capabilities['deviceName'] = ".*pixel*."
 # 3. Where is your selected device located?
 EU_endpoint = 'http://eu1.appium.testobject.com/wd/hub'
 US_endpoint = 'http://us1.appium.testobject.com/wd/hub'

@@ -10,7 +10,7 @@ sauce_client = SauceClient(username, access_key)
 desired_caps = {
     'platformName': "Windows 10",
     'browserName': "chrome",
-    'browserVersion': "latest",
+    'browserVersion': "71",
     'goog:chromeOptions':{"w3c": True},
     'sauce:options':{
         "name":"Chrome W3C Test", 
