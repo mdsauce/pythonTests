@@ -6,7 +6,9 @@ from selenium.common.exceptions import NoAlertPresentException
 from appium.webdriver.common.touch_action import TouchAction
 import time, os, sys
 
-def context_check():
+def context_check(page="none"):
+    if page != "none":
+        print("We are at the %s page" % page)
     contexts = driver.contexts
     print("%d contexts" % (len(contexts)))
     print("All Contexts: ", driver.contexts)
@@ -18,7 +20,7 @@ desired_capabilities['testobject_api_key'] = os.environ['RDC_SALESFORCE_HYBRID']
 desired_capabilities['platformName'] = 'iOS'
 desired_capabilities['platformVersion'] = '12'
 desired_capabilities['appiumVersion'] = '1.9.1'
-desired_capabilities['name'] = 'Login To Sandbox'
+desired_capabilities['name'] = 'Assert Context or Contexts CMDs Do Not Timeout'
 # Where is your selected device located?
 EU_endpoint = 'http://eu1.appium.testobject.com/wd/hub'
 US_endpoint = 'http://us1.appium.testobject.com/wd/hub'
@@ -50,7 +52,7 @@ except Exception as e:
     sys.exit(1)
 
 # login
-context_check()
+context_check("Login")
 try:
     time.sleep(8)
     user_text_box = driver.find_element_by_xpath('//XCUIElementTypeOther[@name="Login | Salesforce"]/XCUIElementTypeTextField')
@@ -84,7 +86,7 @@ except Exception as e:
 time.sleep(8)
 
 # Accept app stuff
-context_check()
+context_check("Allow App Permissions")
 try:
     #allow_btn = driver.find_element_by_accessibility_id(' Allow ')
     allow_btn = driver.find_element_by_xpath('//XCUIElementTypeButton[@name=" Allow "]')
@@ -106,7 +108,7 @@ except Exception as e:
 try:
     time.sleep(4)
     driver.switch_to.context('NATIVE_APP')
-    context_check()
+    context_check("Allow OS Popup")
     alert = driver.switch_to.alert
     alert.accept()
 except Exception as e:
@@ -116,9 +118,11 @@ except Exception as e:
     sys.exit(1)
 
 time.sleep(10)
-print(driver.page_source)
+
+context_check()
+
 directory = '%s/' % os.getcwd()
-file_name = 'last_part_of_test.png'
+file_name = 'last-part-of-rdc-hybrid-ios-test.png'
 driver.save_screenshot(directory + file_name)
 
 driver.quit()
