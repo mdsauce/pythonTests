@@ -17,14 +17,14 @@ def context_check(page="none"):
 def teardown(quit_msg, exception):
     print("%s\n" % quit_msg, exception)
     driver.quit()
-    sys.exit(1)    
+    sys.exit(1)
 
 desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['RDC_SALESFORCE_HYBRID']
 desired_capabilities['platformName'] = 'iOS'
 desired_capabilities['platformVersion'] = '12'
 desired_capabilities['appiumVersion'] = '1.9.1'
-desired_capabilities['name'] = 'Assert Context or Contexts CMDs Do Not Timeout'
+desired_capabilities['name'] = 'Assert Context or Contexts CMDs Do Not Timeout at Login Page'
 # Where is your selected device located?
 EU_endpoint = 'http://eu1.appium.testobject.com/wd/hub'
 US_endpoint = 'http://us1.appium.testobject.com/wd/hub'
@@ -32,7 +32,7 @@ US_endpoint = 'http://us1.appium.testobject.com/wd/hub'
 # The driver will take care of establishing the connection, so we must provide
 # it with the correct endpoint and the requested capabilities.
 driver = webdriver.Remote(US_endpoint, desired_capabilities)
-time.sleep(4)
+print("Current execution: ", driver.desired_capabilities)
 
 # accept the EULA
 actions = TouchAction(driver)
@@ -46,17 +46,19 @@ env_btn = driver.find_element_by_name('login window gear')
 actions.tap(env_btn)
 actions.perform()
 try:
-
     sandbox_btn = driver.find_element_by_name('Sandbox')
     actions.tap(sandbox_btn)
     actions.perform()
 except Exception as e:
-    print("Problem finding Sandbox button\n", e)
-    driver.quit()
-    sys.exit(1)
+    teardown("Problem finding Sandbox button\n", e)
 
 # login
 context_check("Login")
+# assert that this context switch does NOT fail or stop the test
+try:
+    context_check("Login")
+except Exception as e:
+    teardown("Problem switching to WEBVIEW_3", e)
 try:
     time.sleep(8)
     user_text_box = driver.find_element_by_xpath('//XCUIElementTypeOther[@name="Login | Salesforce"]/XCUIElementTypeTextField')
@@ -64,9 +66,7 @@ try:
     actions.perform()
     user_text_box.send_keys(os.environ['SFUSER'])
 except Exception as e:
-    print("Problem finding username textbox\n", e)
-    driver.quit()
-    sys.exit(1)
+    teardown("Problem finding username textbox\n", e)
 
 try:
     pass_text_box = driver.find_element_by_xpath('//XCUIElementTypeOther[@name="Login | Salesforce"]/XCUIElementTypeSecureTextField')
@@ -74,18 +74,14 @@ try:
     actions.perform()
     pass_text_box.send_keys(os.environ['SFPASS'])
 except Exception as e:
-    print("Problem finding user password textbox\n", e)
-    driver.quit()
-    sys.exit(1)
+    teardown("Problem finding user password textbox\n", e)
 
 try:
     login_btn = driver.find_element_by_xpath('//XCUIElementTypeButton[@name="Log In to Sandbox"]')
     actions.tap(login_btn)
     actions.perform()
 except Exception as e:
-    print("Problem pressing the Login Button\n", e)
-    driver.quit()
-    sys.exit(1)
+    teardown("Problem pressing the Login Button\n", e)
 
 time.sleep(8)
 
@@ -104,9 +100,7 @@ except Exception as e:
     actions.tap(allow_btn)
     actions.perform()
 except Exception as e:
-    print("Could not press the Allow App Button\n", e)
-    driver.quit()
-    sys.exit(1)
+    teardown("Could not press the Allow App Button\n", e)
 
 # Allow the OS alert
 try:
@@ -116,10 +110,7 @@ try:
     alert = driver.switch_to.alert
     alert.accept()
 except Exception as e:
-    print("Could not press the Allow App Button\n", e)
-    print(driver.page_source)
-    driver.quit()
-    sys.exit(1)
+    teardown("Could not press the Allow App Button\n", e)
 
 time.sleep(10)
 
