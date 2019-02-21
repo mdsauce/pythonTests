@@ -12,9 +12,9 @@ desired_caps = {
     'platform': "Windows 10",
     'browserName': "chrome",
     'version': "latest",
-    'name': "Basic Test w a Build Number",
+    'name': "Basic Test w a Tunnel",
     'build':"My-hyphenated-test-%s" % buildNum,
-    'tunnelIdentifier': "Test Me"
+    'tunnelIdentifier': "myTestTunnel"
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)

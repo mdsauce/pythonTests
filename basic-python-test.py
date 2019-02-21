@@ -7,8 +7,10 @@ from sauceclient import SauceClient
 import os
 
 
-username = os.environ.get('SAUCE_USERNAME')
-access_key = os.environ.get('SAUCE_ACCESS_KEY')
+# username = os.environ.get('SAUCE_USERNAME')
+# access_key = os.environ.get('SAUCE_ACCESS_KEY')
+username = 'RAishwarya'
+access_key = '880a7cf0-f887-4494-858a-f49034ca3818'
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {

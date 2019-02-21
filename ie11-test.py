@@ -7,9 +7,10 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "Windows 10",
+    'platform': "windows 10",
     'browserName': "internet explorer",
-    'version': "11.103",
+    'version': "11.0",
+    'seleniumVersion': "3.14.0",
     # 'seleniumVersion': "3.9.1",
     'name': "My basic IE11 test",
     #'tunnelIdentifier': "myTestTunnel"

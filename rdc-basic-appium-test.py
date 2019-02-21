@@ -8,8 +8,9 @@ import time, os
 
 desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['PIZZAPIZZA']
-desired_capabilities['platformName'] = 'Android'
+desired_capabilities['platformName'] = 'android'
 desired_capabilities['automationName'] = 'uiautomator2'
+desired_capabilities['appiumVersion'] = '1.10.0'
 #desired_capabilities['platformVersion'] = '8' 
 desired_capabilities['deviceName'] = ".*pixel*."
 # 3. Where is your selected device located?
@@ -19,6 +20,8 @@ US_endpoint = 'http://us1.appium.testobject.com/wd/hub'
 # The driver will take care of establishing the connection, so we must provide
 # it with the correct endpoint and the requested capabilities.
 driver = webdriver.Remote(US_endpoint, desired_capabilities)
+print(driver.session_id)
+print(driver.desired_capabilities)
 time.sleep(4)
 try: 
     alert = driver.switch_to_alert()
