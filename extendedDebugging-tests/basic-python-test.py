@@ -14,7 +14,8 @@ desired_caps = {
     'version': "latest",
     #'tunnelIdentifier': "tunnelName",
     'name': "Chrome ExtendedDebugging Response Test",
-    'extendedDebugging': True
+    'loggingPrefs': {"performance": "ALL"}
+    #'extendedDebugging': True
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)

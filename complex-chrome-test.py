@@ -18,6 +18,10 @@ desired_caps = {
     'name': 'complex chrome test'
 }
 
+desired_caps['chromeOptions'] = {
+        "args": ["--verbose"]
+}
+
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
 driver.maximize_window()
 driver.execute_script("sauce:context=Now moving to Google")
