@@ -15,8 +15,9 @@ chrome_options = Options()
 chrome_options.add_argument("--disable-web-security")
 
 now = datetime.datetime.now()
-build_name = "8-stepper-nosleep-run3-%d" % (now.day)
-test_name = "8-stepper-prod-nosleep-%d:%d:%d" % (now.hour, now.minute, now.microsecond)
+# build_name = "8-stepper-nosleep-google-%d" % (now.day)
+build_name = os.environ['BUILDNAME']
+test_name = "8-stepper-prod-%d:%d:%d" % (now.hour, now.minute, now.microsecond)
 desired_caps = {
     'platform': "macos 10.13",
     'browserName': "Chrome",
@@ -43,6 +44,8 @@ try:
     driver.add_cookie({'domain':'.chase.com','name':'adtoken.chase.com', 'value':'some-value', 'path':'/', 'httpOnly': False, 'secure': False})
     driver.add_cookie({'domain':'.chase.com', 'name':'X-Shape-Whitelist', 'value':'opt-in', 'path':'/', 'httpOnly': False, 'secure': False})
     driver.back()
+    driver.get_log('browser')
+    driver.get_cookies()
     sauce_client.jobs.update_job(driver.session_id, passed=True)
 except Exception as e:
     print("something went wrong!!")

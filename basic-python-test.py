@@ -7,18 +7,17 @@ from sauceclient import SauceClient
 import os
 
 
-# username = os.environ.get('SAUCE_USERNAME')
-# access_key = os.environ.get('SAUCE_ACCESS_KEY')
-username = 'RAishwarya'
-access_key = '880a7cf0-f887-4494-858a-f49034ca3818'
+username = os.environ.get('SAUCE_USERNAME')
+access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "macos 10.13",
-    'browserName': "safari",
-    'version': "11.1",
-    'build': "Static Build Name",
-    'name': "Reused Generic Test Name",
+    'platform': "Windows 7",
+    'browserName': "Firefox",
+    'version': "latest",
+    'build': "Firefox Resolution Test",
+    'name': "Resolution Test",
+    'screenResolution': "2560x1600"
     # 'tunnelIdentifier': "myTestTunnel"
     # 'goog:chromeOptions':{"w3c": "true"}
 }
@@ -31,16 +30,15 @@ driver.get("https://www.google.com")
 driver.get("https://saucelabs.com")
 wait = WebDriverWait(driver, 60)
 wait.until(EC.presence_of_element_located((By.CLASS_NAME, "site-container")))
-if driver.title != "Cross Browser Testing, Selenium Testing, and Mobile Testing | Sauce Labs":
+if driver.title != "Cross Browser Testing, Selenium Testing, Mobile Testing | Sauce Labs":
     sauce_client.jobs.update_job(driver.session_id, passed=False)
     driver.quit()
+    # if you remove this exit and the Title doesn't match, 
+    # the test will Fail and close, then continue sending commands to the current driver session ID
+    exit(1)
 
 driver.get("https://www.google.com/")
 query_input = wait.until(EC.presence_of_element_located((By.NAME, "q")))
-query_input.send_keys("Selenium Testing")
-search = wait.until(EC.presence_of_element_located((By.NAME, "btnK")))
-search.click()
-driver.implicitly_wait(2)
 
 sauce_client.jobs.update_job(driver.session_id, passed=True)
 
