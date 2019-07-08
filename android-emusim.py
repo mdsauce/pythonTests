@@ -8,11 +8,12 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 caps = {}
-caps['deviceName'] = "Google Nexus 7 HD GoogleAPI Emulator"
-caps['deviceOrientation'] = "portrait"
-caps['browserName'] = "Browser"
-caps['platformVersion'] = "4.4"
+caps['deviceName'] = "Android Emulator"
+caps['browserName'] = "Chrome"
 caps['platformName'] = "Android"
+caps['platformVersion'] = "8.0"
+caps['androidVersion'] = "1.11.1"
+
 
 driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=caps)
 driver.get("https://app.saucelabs.com")
