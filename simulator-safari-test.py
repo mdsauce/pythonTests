@@ -8,13 +8,21 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-        'deviceName': "iphone simulator",
-        'browserName': "safari",
-        'platformVersion': "12.0",
-        'platformName': "iOS",
+#         'deviceName': "iphone simulator",
+#         'browserName': "safari",
+#         'platformVersion': "12.0",
+#         'platformName': "iOS",
+#         'appiumVersion': "1.9.1",
+#         'name': "iOS Sim Test Window Maximize",
+#         'Build': "maximize current window bug"
+        'deviceName': "android emulator",
+        'browserName': "chrome",
+        'platformVersion': "8.0",
+        'platformName': "android",
         'appiumVersion': "1.9.1",
-        'name': "iOS Sim Test Window Maximize"
+        'name': "android emu Test Window Maximize",
 }
+
 try:
     driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
     ctx = driver.context
