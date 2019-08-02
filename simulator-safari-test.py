@@ -12,12 +12,19 @@ desired_caps = {
         'browserName': "safari",
         'platformVersion': "12.0",
         'platformName': "iOS",
-        'name': "iOS EMUSIM Test"
+        'appiumVersion': "1.9.1",
+        'name': "iOS Sim Test Window Maximize"
 }
-
-driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
-driver.maximize_window()
-driver.get("https://saucelabs.com")
-sauce_client.jobs.update_job(driver.session_id, passed=True)
-
-driver.quit()
+try:
+    driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
+    ctx = driver.context
+    print("current context: ", ctx)
+    driver.maximize_window()
+    driver.get("https://saucelabs.com")
+    sauce_client.jobs.update_job(driver.session_id, passed=True)
+    driver.quit()
+except Exception as e:
+    print("something went wrong!!")
+    print("Error: \n", e, driver.session_id)
+    sauce_client.jobs.update_job(driver.session_id, passed=False)
+    driver.quit()
