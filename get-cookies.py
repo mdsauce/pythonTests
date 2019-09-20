@@ -10,27 +10,19 @@ buildNum = randint(1,1000)
 
 desired_caps = {
     'platform': "Windows 10",
-    'browserName': "chrome",
+    'browserName': "internet explorer",
     'version': "latest",
     'name': "Cookie related test",
     'build':"Cookies-%s" % buildNum
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
-all_cookies = driver.get_cookies()
-print(all_cookies)
-driver.get("https://www.google.com")
-driver.add_cookie({"name": "test-cookie", "value": "this is a test"})
-driver.add_cookie({"domain": ".chase.com", "name": "X-Shape-Whitelist", "value": "opt-in", "path": "/", "httpOnly": "false", "secure": "false" })
-driver.get("https://www.chase.com")
+
+driver.get("https://news.ycombinator.com/")
 all_cookies = driver.get_cookies()
 print(all_cookies)
 
-driver.maximize_window()
-driver.execute_script("sauce:context=Now moving to Google")
-driver.get("https://www.google.com")
-driver.add_cookie({"name": "test-cookie", "value": "this is a test"})
-driver.add_cookie({"domain": ".chase.com", "name": "X-Shape-Whitelist", "value": "opt-in", "path": "/", "httpOnly": "false", "secure": "false" })
+driver.get("about:blank")
 all_cookies = driver.get_cookies()
 print(all_cookies)
 
