@@ -17,7 +17,8 @@ desired_caps = {
     'version': "61",
     'build': "Chrome Mac Google Test",
     'name': "testGoogle",
-    'tunnelIdentifier': "myTestTunnel"
+    #'tunnelIdentifier': "myTestTunnel"
+    'videoUploadOnPass': "false"
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
