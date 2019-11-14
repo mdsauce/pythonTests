@@ -6,12 +6,15 @@ from selenium.common.exceptions import NoAlertPresentException
 from appium.webdriver.common.touch_action import TouchAction
 import time, os
 
+# device = "(iPhone( X|X)[^1]).*|(iPhone(7|8)[^Plus1]).*|(iPhone(7|8)Plus1)|(iPad Pro 9.7)|(iPadAir21)|(iPadmini41)"
+device = "iphone x*"
+
 desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['my_project_KEY']
 desired_capabilities['platformName'] = 'iOS'
-desired_capabilities['name'] = "DeviceName - iPhone [78]"
+desired_capabilities['name'] = "DeviceName - " + device
 #desired_capabilities['platformVersion'] = '8' 
-desired_capabilities['deviceName'] = "iPhone [78]"
+desired_capabilities['deviceName'] = device
 
 EU_endpoint = 'http://eu1.appium.testobject.com/wd/hub'
 US_endpoint = 'http://us1.appium.testobject.com/wd/hub'
@@ -22,6 +25,7 @@ try:
     driver = webdriver.Remote(US_endpoint, desired_capabilities)
     print("\n\nTest", driver.capabilities['name'], " obtained device: ", driver.capabilities['testobject_device_name'])
     print("Link to full Test here: ", driver.capabilities['testobject_test_report_url'])
+    print("DeviceName Cap: ", device)
     # print(driver.session_id)
     # print(driver.desired_capabilities)
     driver.get("https://www.saucedemo.com/")
