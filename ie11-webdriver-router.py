@@ -28,7 +28,7 @@ desired_caps = {
 try:
     driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
     driver.maximize_window()
-    for i in range(1, 40):
+    for i in range(0, 41):
         driver.execute_script("sauce:context=Now moving to Google")
         driver.get("https://www.google.com")
         # title = driver.title
