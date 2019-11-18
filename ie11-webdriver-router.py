@@ -31,7 +31,7 @@ try:
     for i in range(1, 40):
         driver.execute_script("sauce:context=Now moving to Google")
         driver.get("https://www.google.com")
-        title = driver.title
+        # title = driver.title
         wait = WebDriverWait(driver, 60)
         query_input = wait.until(EC.presence_of_element_located((By.NAME, "q")))
         query_input.send_keys("This should NOT crash" + str(i))
