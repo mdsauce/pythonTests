@@ -8,34 +8,39 @@ import os, sys
 
 def teardown(quit_msg, exception):
   print("%s\n" % quit_msg, exception)
-  driver.session_id
+  print("%s failed" % driver.session_id)
   driver.quit()
   sys.exit(1)
 
 username = os.environ.get('SAUCE_USERNAME')
 access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
+us = 'https://ondemand.us-west-1.saucelabs.com/wd/hub'
+eu = 'https://ondemand.eu-central-1.saucelabs.com/wd/hub'
 
 desired_caps = {
-    'platform': "windows 10",
-    'browserName': "internet explorer",
-    'version': "11.0",
-    # 'seleniumVersion': "3.9.1",
-    'name': "IE11 wd-router test",
-    #'tunnelIdentifier': "myTestTunnel"
+    'platformName': 'windows 10',
+    'browserName': 'internet explorer',
+    'browserVersion': 'latest',
+    'sauce:options': { 
+        'name': "IE11 crash test - W3C wait",
+        'username': username,
+        'accessKey': access_key,
+        # 'seleniumVersion': '3.11.0',
+        # 'iedriverVersion': '3.12.0',
+        # 'tunnelIdentifier': "myTestTunnel"
+    }
 }
 
+
 try:
-    driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
+    driver = webdriver.Remote(command_executor=us, desired_capabilities=desired_caps)
     driver.maximize_window()
-    for i in range(0, 41):
-        driver.execute_script("sauce:context=Now moving to Google")
+    wait = WebDriverWait(driver, 60)
+    for i in range(150):
         driver.get("https://www.google.com")
-        # title = driver.title
-        wait = WebDriverWait(driver, 60)
         query_input = wait.until(EC.presence_of_element_located((By.NAME, "q")))
         query_input.send_keys("This should NOT crash" + str(i))
-        query_input.send_keys(Keys.ENTER)
     driver.execute_script("sauce:job-result=true")
 except Exception as e:
     driver.execute_script("sauce:job-result=false")
