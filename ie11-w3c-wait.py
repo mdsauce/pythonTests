@@ -36,7 +36,7 @@ desired_caps = {
 try:
     driver = webdriver.Remote(command_executor=us, desired_capabilities=desired_caps)
     driver.maximize_window()
-    wait = WebDriverWait(driver, 60)
+    wait = WebDriverWait(driver, 10)
     for i in range(150):
         driver.get("https://www.google.com")
         query_input = wait.until(EC.presence_of_element_located((By.NAME, "q")))

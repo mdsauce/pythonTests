@@ -9,8 +9,8 @@ sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
     'platform': "Windows 10",
-    'browserName': "MicrosoftEdge",
-    'version': "14.14393",
+    'browserName': "microsoftedge",
+    'version': "17.17134",
     # 'seleniumVersion': "3.9.1",
     'name': "My basic Edge test",
     #'tunnelIdentifier': "myTestTunnel"

@@ -19,7 +19,7 @@ sauce_client = SauceClient(username, access_key)
 desired_caps = {
     'platform': "windows 10",
     'browserName': "chrome",
-    'version': "beta",
+    'version': "latest",
     # 'build': "Static Build Name",
     'name': "Generic Chrome Latest Test",
     # 'tunnelIdentifier': "myTestTunnel"
