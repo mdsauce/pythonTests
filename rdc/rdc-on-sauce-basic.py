@@ -1,8 +1,7 @@
 # RDC on Sauce test using UP user
+# user MUST be enrolled in RDC on Sauce
 # Max Dobeck
 from appium import webdriver
-# from selenium.common.exceptions import NoAlertPresentException
-# from appium.webdriver.common.touch_action import TouchAction
 import os
 
 device = "Samsung Galaxy S6.*"
