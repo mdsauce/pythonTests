@@ -8,7 +8,6 @@ import os
 device = "Samsung Galaxy S6.*"
 
 desired_capabilities = {}
-# desired_capabilities['testobject_api_key'] = os.environ['UP_USER_KEY']
 desired_capabilities['platformName'] = 'android'
 desired_capabilities['privateDevicesOnly'] = True
 desired_capabilities['platformVersion'] = 7
