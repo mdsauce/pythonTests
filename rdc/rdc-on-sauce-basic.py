@@ -1,10 +1,14 @@
-# RDC on Sauce test using UP user
-# user MUST be enrolled in RDC on Sauce
-# Max Dobeck
+"""
+RDC on Sauce test using UP user
+user MUST be enrolled in RDC on Sauce
+Max Dobeck
+"""
 from appium import webdriver
 import os
 
-device = "Samsung Galaxy S6.*"
+# device = "Samsung Galaxy.*"
+device = "Samsung Galaxy S6"
+# device = ".*Galaxy.*"
 
 desired_capabilities = {}
 desired_capabilities['platformName'] = 'android'
