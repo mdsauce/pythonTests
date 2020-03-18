@@ -14,7 +14,7 @@ desired_caps = {
     'platform': "windows 10",
     'browserName': "firefox",
     'version': "latest",
-    'build': "Static Build Name",
+    # 'build': "Static Build Name",
     'name': "This job should be public",
     'public': "public"
     # 'tunnelIdentifier': "myTestTunnel"
