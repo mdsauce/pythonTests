@@ -16,7 +16,8 @@ caps['platformName'] = "Android"
 caps['browserName'] = "Chrome"
 
 
-driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=caps)
+driver = webdriver.Remote(command_executor="https://%s:%s@ondemand.saucelabs.\
+com/wd/hub" % (username, access_key), desired_capabilities=caps)
 driver.get("https://app.saucelabs.com")
 sauce_client.jobs.update_job(driver.session_id, passed=True)
 
