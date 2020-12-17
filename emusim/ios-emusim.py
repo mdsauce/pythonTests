@@ -1,6 +1,5 @@
-from selenium import webdriver
+from appium import webdriver
 from sauceclient import SauceClient
-import time
 import os
 
 username = os.environ.get('SAUCE_USERNAME')
