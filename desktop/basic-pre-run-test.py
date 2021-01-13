@@ -14,9 +14,11 @@ desired_caps = {
     'version': "11.0",
     'name': "My Windows Bgrd PreRun.exe Test",
     'prerun': {
-        'executable':'sauce-storage:BrowserAuthenticationAdv.exe',
+        # 'executable': 'sauce-storage:BrowserAuthenticationAdv.exe',
+        # 'executable': 'https://gist.github.com/DylanLacey/f3f03296718783f52e4938d7845d3660',
+        'executable': "https://gist.githubusercontent.com/bertinwong-saucelabs/8a38ed0371eec5dfefa576c917beac18/raw/b17cfb54aab0f14106473091b922415ea90ef4c0/refresh_wininet.bat",
         'background': 'true',
-    #    'args': [ '--silent', '-a', '-q' ]
+        # 'args': [ '--silent', '-a', '-q' ]
     }
 }
 
