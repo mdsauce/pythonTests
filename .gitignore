@@ -4,4 +4,6 @@
 
 .vscode
 
-pageload/
+pageload/*
+
+customer/*
