@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from sauceclient import SauceClient
 import os
-
+import traceback
 
 username = os.environ.get('SAUCE_USERNAME')
 access_key = os.environ.get('SAUCE_ACCESS_KEY')
@@ -26,11 +26,11 @@ try:
 except Exception as e:
     sauce_client.jobs.update_job(driver.session_id, passed=False)
     print(e)
+    print(traceback.format_exc())
     print(driver.session_id)
     driver.quit()
     exit(1)
 
 
 sauce_client.jobs.update_job(driver.session_id, passed=True)
-
 driver.quit()
