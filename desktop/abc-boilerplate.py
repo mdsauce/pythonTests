@@ -27,6 +27,7 @@ except Exception as e:
     sauce_client.jobs.update_job(driver.session_id, passed=False)
     print(e)
     print(driver.session_id)
+    driver.quit()
     exit(1)
 
 
