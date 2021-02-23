@@ -12,12 +12,12 @@ access_key = os.environ.get('SAUCE_ACCESS_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
-    'platform': "macos 10.13",
+    'platformName': "macos 11.00",
     'browserName': "safari",
-    'version': "12",
-    'build': "Static Build Name",
-    'name': "Reused Generic Test Name",
-    'seleniumVersion':"3.14.0_safarilegacy",
+    'browserVersion': "latest",
+    'sauce:options': {},
+    # 'build': "Static Build Name",
+    # 'name': "Reused Generic Test Name",
     # 'tunnelIdentifier': "myTestTunnel"
     # 'goog:chromeOptions':{"w3c": "true"}
 }
