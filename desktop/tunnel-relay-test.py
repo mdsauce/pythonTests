@@ -13,6 +13,9 @@ desired_caps = {
     'browserName': "firefox",
     'version': "latest",
 }
+
+# !! as of 2021 Q2 this MUST be http. urllib3 freaks out
+# when it tries an https connection
 credentials = f'http://{username}:{access_key}@'
 ENDPOINT = credentials + 'localhost:4446/wd/hub'
 
