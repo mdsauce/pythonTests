@@ -8,10 +8,10 @@ sauce_client = SauceClient(username, access_key)
 
 caps = {}
 caps['name'] = "Simple Android EMUSIM Test"
-caps['appiumVersion'] = "1.15.0"
+caps['appiumVersion'] = "1.18.1"
 caps['deviceName'] = "Android GoogleAPI Emulator"
 caps['deviceOrientation'] = "portrait"
-caps['platformVersion'] = "8.1"
+caps['platformVersion'] = "9"
 caps['platformName'] = "Android"
 caps['browserName'] = "Chrome"
 

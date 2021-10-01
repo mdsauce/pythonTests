@@ -3,6 +3,7 @@ from appium import webdriver
 import os
 
 desired_capabilities = {}
+desired_capabilities['browserName'] = 'safari'
 desired_capabilities['platformName'] = 'ios'
 desired_capabilities['platformVersion'] = '15'
 desired_capabilities['deviceName'] = 'iPhone .*'

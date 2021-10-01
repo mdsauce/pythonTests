@@ -1,7 +1,6 @@
 # author Max Dobeck
 from appium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
-from appium.webdriver.common.touch_action import TouchAction
 import time, os
 
 desired_capabilities = {}
@@ -24,5 +23,4 @@ print("I am going to reset the app now")
 driver.reset()
 time.sleep(10)
 print("App is back up")
-
 driver.quit()

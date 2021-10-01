@@ -7,23 +7,31 @@ from appium.webdriver.common.touch_action import TouchAction
 import time, os
 
 # device = "iphone [78]||iphone xs||iphone x"
-device = "iPhone X.*|iPhone [78].*|iPad Pro 9.7|iPadAir21|iPadmini41|iPad Pro .*"
+# device = "iPhone X.*|iPhone [78].*|iPad Pro 9.7|iPadAir21|iPadmini41|iPad Pro .*"
+# device = "iPhone_11_13_real_us"
+# device = "iPhone 13"
 # device = "iphone 7|iphone 8"
 
 desired_capabilities = {}
 desired_capabilities['testobject_api_key'] = os.environ['my_project_KEY']
-desired_capabilities['platformName'] = 'iOS'
-desired_capabilities['name'] = "DeviceName - " + device
-#desired_capabilities['platformVersion'] = '8' 
-desired_capabilities['deviceName'] = device
+desired_capabilities['platformName'] = 'Android'
+desired_capabilities['deviceName'] = '.*Galaxy.*'
+desired_capabilities['platformVersion'] = '11'
+desired_capabilities['browserName'] = ''
+desired_capabilities['deviceOrientation'] = 'portrait'
+desired_capabilities['name'] = "DeviceName Test using " + desired_capabilities['deviceName']
 
-EU_endpoint = 'http://eu1.appium.testobject.com/wd/hub'
-US_endpoint = 'http://us1.appium.testobject.com/wd/hub'
+EU_endpoint = 'ondemand.eu-central-1.saucelabs.com/wd/hub'
+US_endpoint = 'ondemand.us-west-1.saucelabs.com/wd/hub'
+username = os.getenv("SUPPORTTEAM_USER")
+access_key = os.getenv("SUPPORTTEAM_KEY")
+credentials = f'https://{username}:{access_key}@'
+ONDEMAND_ENDPOINT = credentials + US_endpoint
 
 # The driver will take care of establishing the connection, so we must provide
 # it with the correct endpoint and the requested capabilities.
 try:
-    driver = webdriver.Remote(US_endpoint, desired_capabilities)
+    driver = webdriver.Remote(ONDEMAND_ENDPOINT, desired_capabilities)
     print("\n\nTest", driver.capabilities['name'], " obtained device: ", driver.capabilities['testobject_device_name'])
     print("Link to full Test here: ", driver.capabilities['testobject_test_report_url'])
     # print("DeviceName Cap: ", device)
