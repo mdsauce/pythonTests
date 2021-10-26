@@ -10,7 +10,7 @@ What happens when you mix the new caps w/ the old?
 
 ### Results
 
-| VDC | RDC | VMD |
-| --- | --- | --- |
+|cap type | VDC | RDC | VMD |
+| --- | --- | --- | --- |
 | legacy | X broken | ? | ? |
 | new | <ul><li>- [x] works</li></ul> | ? | ? |
