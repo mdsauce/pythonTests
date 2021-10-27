@@ -17,8 +17,14 @@ desired_caps = {
     'platformVersion': "8.0",
     'platformName': "android",
 
-    'tunnelName': "my-tunnel",
-    'name': "VMD test New tunnelName cap",
+    'tunnelIdentifier': "deprecated-cap-test",
+    'parentTunnel': "supportteam"
+
+    # 'tunnelName': "deprecated-cap-test",
+    # 'tunnelOwner': "supportteam"
+
+    # 'tunnelName': "my-tunnel",
+    # 'name': "VMD test New tunnelName cap",
         
     # 'name': "VMD test Old tunnelIdentifier cap",
     # 'tunnelIdentifier': "my-tunnel"
