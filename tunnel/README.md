@@ -24,5 +24,5 @@ Using A  Shared Tunnel
 Using An Owned Tunnel
 |cap | VDC | RDC | VMD |
 | --- | --- | --- | --- |
-| tunnelIdentifier | :white_check_mark: | :white_check_mark: | ? |
-| tunnelName       | :x: | :white_check_mark: | ? |
+| tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| tunnelName | :x: | :white_check_mark: | :x: |
