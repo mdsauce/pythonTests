@@ -14,5 +14,5 @@ What happens when you mix the new caps w/ the old?
 
 |cap type | VDC | RDC | VMD |
 | --- | --- | --- | --- |
-| legacy | X broken | ? | ? |
-| new | <ul><li>- [x] works</li></ul> | ? | ? |
+| legacy | x broken | ? | ? |
+| new | :white_check_mark: works | ? | ? |
