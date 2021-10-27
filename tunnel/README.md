@@ -17,8 +17,8 @@ What happens when you mix the new caps w/ the old?
 Using A  Shared Tunnel
 |cap type | VDC | RDC | VMD |
 | --- | --- | --- | --- |
-| legacy | :x: | ? | ? |
-| new | :white_check_mark: | ? | ? |
+| legacy | :x: | :white_check_mark: | ? |
+| new | :white_check_mark: | :white_check_mark: | ? |
 
 
 Using An Owned Tunnel
