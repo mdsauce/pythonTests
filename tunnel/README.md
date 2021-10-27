@@ -14,6 +14,7 @@ Answer: job errors out in most cases.
 ~~NOTE: May have found a problem where sub-accounts can use non-shared tunnels. I.e. tunnels missing the `--shared-tunnel` flag.~~ all is well nvm
 
 ### Results
+These results only show if a tunnel was used, not the test status.
 
 Using A  Shared Tunnel
 |cap type | VDC | RDC | VMD |
