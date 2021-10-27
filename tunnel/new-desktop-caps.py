@@ -12,7 +12,7 @@ desired_caps = {
     'browserName': "chrome",
     'version': "latest",
     'name': "Testing if new tunnelOwner cap works",
-    'build':"tunnel-cap-test",
+    # 'build':"tunnel-cap-test",
     'tunnelOwner': "supportteam",
     'tunnelName': "deprecated-cap-test"
 }
@@ -22,7 +22,5 @@ driver.maximize_window()
 driver.execute_script("sauce:context=Now moving to Google")
 driver.get("https://www.google.com")
 driver.execute_script("sauce:context=Did that work?")
-
-sauce_client.jobs.update_job(driver.session_id, passed=True)
 
 driver.quit()
