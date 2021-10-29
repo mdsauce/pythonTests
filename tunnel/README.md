@@ -13,6 +13,13 @@ Answer: job errors out in most cases.
 
 ~~NOTE: May have found a problem where sub-accounts can use non-shared tunnels. I.e. tunnels missing the `--shared-tunnel` flag.~~ all is well nvm
 
+### Tunnels Used
+`./sc -u $SUPPORT_SUB_ACCOUNT -k $SUPPORT_SUB_ACCOUNT_KEY` tunnel owned by sub-account
+
+`./sc -u $SUPPORT_TEAM_ADMIN -k $SUPPORT_TEAM_ADMIN_KEY --shared-tunnel` org wide tunnel shared by org admin
+
+
+
 ### Results
 These results only show if a tunnel was used, not the test status.
 
