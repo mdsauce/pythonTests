@@ -13,7 +13,6 @@ desired_caps = {
     'browserName': "chrome",
     'version': "latest",
     'name': "Testing if old parentTunnel cap works",
-    # 'build':"tunnel-cap-test%s" % build,
     'parentTunnel': "supportteam",
     'tunnelIdentifier': "deprecated-cap-test"
 }

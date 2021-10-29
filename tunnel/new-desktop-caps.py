@@ -12,7 +12,6 @@ desired_caps = {
     'browserName': "chrome",
     'version': "latest",
     'name': "Testing if new tunnelOwner cap works",
-    # 'build':"tunnel-cap-test",
     'tunnelOwner': "supportteam",
     'tunnelName': "deprecated-cap-test"
 }

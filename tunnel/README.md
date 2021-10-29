@@ -16,7 +16,7 @@ Answer: job errors out in most cases.
 ### Tunnels Used
 `./sc -u $SUPPORT_SUB_ACCOUNT -k $SUPPORT_SUB_ACCOUNT_KEY -i my-tunnel` tunnel owned by sub-account
 
-`./sc -u $SUPPORT_TEAM_ADMIN -k $SUPPORT_TEAM_ADMIN_KEY --shared-tunnel` org wide tunnel shared by org admin
+`./sc -u $SUPPORT_TEAM_ADMIN -k $SUPPORT_TEAM_ADMIN_KEY --shared-tunnel -i deprecated-cap-test` org wide tunnel shared by org admin
 
 
 
@@ -32,8 +32,8 @@ These results only show if a tunnel was used, not the test status.
 Shared
 |cap type | VDC | RDC | VMD |
 | --- | --- | --- | --- |
-| legacy | :x: | :white_check_mark: | :white_check_mark: |
-| new | :white_check_mark: | :white_check_mark: | :x: |
+| legacy | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| new | :x: | :white_check_mark: | :x: |
 
 
 ##### Using An Owned Tunnel
