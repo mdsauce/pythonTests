@@ -23,23 +23,25 @@ Answer: job errors out in most cases.
 ### Results
 These results only show if a tunnel was used, not the test status.
 
-Using A  Shared Tunnel
+##### Using A  Shared Tunnel
 - Tunnel owned by org admin
 - Tunnel has `--shared-tunnel`
 - legacy == `tunnelIdentifier` + `parentTunnel` caps
 - new == `tunnelName` + `tunnelOwner` caps
 
+Shared
 |cap type | VDC | RDC | VMD |
 | --- | --- | --- | --- |
 | legacy | :x: | :white_check_mark: | :white_check_mark: |
 | new | :white_check_mark: | :white_check_mark: | :x: |
 
 
-Using An Owned Tunnel
+##### Using An Owned Tunnel
 - Tunnel owned by sub-account or individual user
 - Tunnel is not shared (no --shared-tunnel)
 - no need for `parentTunnel` or `tunnelOwner` caps, ignoring these
 
+Owned
 |cap | VDC | RDC | VMD |
 | --- | --- | --- | --- |
 | tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: |
