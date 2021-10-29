@@ -14,7 +14,7 @@ Answer: job errors out in most cases.
 ~~NOTE: May have found a problem where sub-accounts can use non-shared tunnels. I.e. tunnels missing the `--shared-tunnel` flag.~~ all is well nvm
 
 ### Tunnels Used
-`./sc -u $SUPPORT_SUB_ACCOUNT -k $SUPPORT_SUB_ACCOUNT_KEY` tunnel owned by sub-account
+`./sc -u $SUPPORT_SUB_ACCOUNT -k $SUPPORT_SUB_ACCOUNT_KEY -i my-tunnel` tunnel owned by sub-account
 
 `./sc -u $SUPPORT_TEAM_ADMIN -k $SUPPORT_TEAM_ADMIN_KEY --shared-tunnel` org wide tunnel shared by org admin
 
@@ -24,6 +24,11 @@ Answer: job errors out in most cases.
 These results only show if a tunnel was used, not the test status.
 
 Using A  Shared Tunnel
+- Tunnel owned by org admin
+- Tunnel has `--shared-tunnel`
+- legacy == `tunnelIdentifier` + `parentTunnel` caps
+- new == `tunnelName` + `tunnelOwner` caps
+
 |cap type | VDC | RDC | VMD |
 | --- | --- | --- | --- |
 | legacy | :x: | :white_check_mark: | :white_check_mark: |
@@ -31,6 +36,10 @@ Using A  Shared Tunnel
 
 
 Using An Owned Tunnel
+- Tunnel owned by sub-account or individual user
+- Tunnel is not shared (no --shared-tunnel)
+- no need for `parentTunnel` or `tunnelOwner` caps, ignoring these
+
 |cap | VDC | RDC | VMD |
 | --- | --- | --- | --- |
 | tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: |
