@@ -30,10 +30,10 @@ These results only show if a tunnel was used, not the test status.
 - new == `tunnelName` + `tunnelOwner` caps
 
 Shared
-|cap type | VDC | RDC | VMD |
-| --- | --- | --- | --- |
-| legacy | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| new | :x: | :white_check_mark: | :x: |
+|cap type | VDC | RDC | VMD | RDC(W3C) |
+| --- | --- | --- | --- | --- |
+| legacy | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
+| new | :x: | :white_check_mark: | :x: | :white_check_mark: |
 
 
 ##### Using An Owned Tunnel
@@ -42,7 +42,7 @@ Shared
 - no need for `parentTunnel` or `tunnelOwner` caps, ignoring these
 
 Owned
-|cap | VDC | RDC | VMD |
-| --- | --- | --- | --- |
-| tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| tunnelName | :x: | :white_check_mark: | :x: |
+|cap | VDC | RDC | VMD | RDC(W3C) |
+| --- | --- | --- | --- | --- |
+| tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: | ? |
+| tunnelName | :x: | :white_check_mark: | :x: | ? |
