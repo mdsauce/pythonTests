@@ -32,8 +32,9 @@ These results only show if a tunnel was used, not the test status.
 Shared
 |cap type | VDC | RDC | VMD | RDC(W3C) |
 | --- | --- | --- | --- | --- |
-| legacy | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
-| new | :x: | :white_check_mark: | :x: | :white_check_mark: |
+| tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: | ? |
+| tunnelName | :x: | :white_check_mark: | :x: | ? |
+
 
 
 ##### Using An Owned Tunnel
@@ -44,5 +45,5 @@ Shared
 Owned
 |cap | VDC | RDC | VMD | RDC(W3C) |
 | --- | --- | --- | --- | --- |
-| tunnelIdentifier | :white_check_mark: | :white_check_mark: | :white_check_mark: | ? |
-| tunnelName | :x: | :white_check_mark: | :x: | ? |
+| legacy | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
+| new | :x: | :white_check_mark: | :x: | :white_check_mark: |
