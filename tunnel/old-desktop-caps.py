@@ -14,7 +14,7 @@ desired_caps = {
     'version': "latest",
     'name': "Testing if old parentTunnel cap works",
     'parentTunnel': "supportteam",
-    'tunnelIdentifier': "deprecated-cap-test"
+    'tunnelIdentifier': "fancy-tunnel"
 }
 
 driver = webdriver.Remote(command_executor="http://%s:%s@ondemand.us-west-1.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)

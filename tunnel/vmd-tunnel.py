@@ -17,7 +17,7 @@ desired_caps = {
     'platformVersion': "8.0",
     'platformName': "android",
 
-    'tunnelIdentifier': "deprecated-cap-test",
+    'tunnelIdentifier': "fancy-tunnel",
     'parentTunnel': "supportteam"
 
     # 'tunnelName': "deprecated-cap-test",

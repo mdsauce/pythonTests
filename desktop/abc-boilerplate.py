@@ -4,8 +4,8 @@ from sauceclient import SauceClient
 import os
 import traceback
 
-username = os.environ.get('SAUCE_USERNAME')
-access_key = os.environ.get('SAUCE_ACCESS_KEY')
+username = os.environ.get('SUPPORT_TEAM_ADMIN')
+access_key = os.environ.get('SUPPORT_TEAM_ADMIN_KEY')
 sauce_client = SauceClient(username, access_key)
 
 desired_caps = {
