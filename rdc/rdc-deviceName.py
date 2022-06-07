@@ -13,23 +13,21 @@ import time, os
 # device = "iphone 7|iphone 8"
 
 desired_capabilities = {}
-desired_capabilities['testobject_api_key'] = os.environ['my_project_KEY']
 desired_capabilities['platformName'] = 'Android'
-desired_capabilities['deviceName'] = '.*Galaxy.*'
-desired_capabilities['platformVersion'] = '11'
+desired_capabilities['deviceName'] = '.*Pixel 6.*'
+desired_capabilities['platformVersion'] = '12'
 desired_capabilities['browserName'] = ''
+desired_capabilities['privateDevicesOnly'] = 'true'
 desired_capabilities['deviceOrientation'] = 'portrait'
 desired_capabilities['name'] = "DeviceName Test using " + desired_capabilities['deviceName']
 
 EU_endpoint = 'ondemand.eu-central-1.saucelabs.com/wd/hub'
 US_endpoint = 'ondemand.us-west-1.saucelabs.com/wd/hub'
-username = os.getenv("SUPPORTTEAM_USER")
-access_key = os.getenv("SUPPORTTEAM_KEY")
+username = os.getenv("CUSTOMER_USER")
+access_key = os.getenv("CUSTOMER_KEY")
 credentials = f'https://{username}:{access_key}@'
-ONDEMAND_ENDPOINT = credentials + US_endpoint
+ONDEMAND_ENDPOINT = credentials + EU_endpoint
 
-# The driver will take care of establishing the connection, so we must provide
-# it with the correct endpoint and the requested capabilities.
 try:
     driver = webdriver.Remote(ONDEMAND_ENDPOINT, desired_capabilities)
     print("\n\nTest", driver.capabilities['name'], " obtained device: ", driver.capabilities['testobject_device_name'])
@@ -43,4 +41,4 @@ try:
 except Exception as e:
     print("Something went wrong >>>>>>>>>>>>>>>", e)
     exit(1)
-driver.quit()
+# driver.quit()
